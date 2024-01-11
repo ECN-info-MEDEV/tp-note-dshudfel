@@ -23,7 +23,6 @@ public class Tpnotedshudfel {
         try {
           LogManager.getLogManager().readConfiguration(new FileInputStream("mylogging.properties"));
         } catch (SecurityException | IOException e1) {
-            e1.printStackTrace();
         }
         try {
             //FileHandler file name with max size and number of log files limit
@@ -32,7 +31,6 @@ public class Tpnotedshudfel {
             //setting custom filter for FileHandler
             fileHandler.setFilter(new MyLoggerFilter());
         } catch (SecurityException | IOException e) {
-            e.printStackTrace();
         }
                  logger.log(Level.INFO, "Hello LOG Word =)");
     }
