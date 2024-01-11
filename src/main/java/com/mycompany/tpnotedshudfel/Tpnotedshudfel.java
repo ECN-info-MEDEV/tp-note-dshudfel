@@ -11,6 +11,6 @@ package com.mycompany.tpnotedshudfel;
 public class Tpnotedshudfel {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello Word!");
     }
 }
