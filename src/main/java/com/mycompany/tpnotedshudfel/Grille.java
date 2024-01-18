@@ -146,6 +146,10 @@ public class Grille {
     public Case[][] getCases() {
         return grille;
     }
+    
+    public Case getCase(int i, int j) {
+        return grille[i][j];
+    }
 
     public void setGrille(Case[][] grille) {
         this.grille = grille;
