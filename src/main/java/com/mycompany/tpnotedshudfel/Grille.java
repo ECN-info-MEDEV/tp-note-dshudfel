@@ -74,4 +74,79 @@ public class Grille {
 
     
     // Autres méthodes et fonctionnalités de la classe Grille...
+
+    public boolean placerBateau(Bateau bateau, Point coord, String orientation) {
+        // Vérifier si les coordonnées sont valides
+        int x = (int) coord.getX();
+        int y = (int) coord.getY();
+
+        if (x < 0 || x >= grille.length || y < 0 || y >= grille[x].length) {
+            System.out.println("Coordonnées de placement invalides.");
+            return false;
+        }
+           
+        if(orientation.equals("H")){
+            // Vérifier si les emplacements sont déjà occupés par d'autres bateaux
+            for (int i = 0; i < bateau.getTaille(); i++) {
+                if (grille[x + i][y].getEtatCase() != Case.EtatCase.VIDE) {
+                    System.out.println("Emplacement déjà occupé par un autre bateau.");
+                    return false;
+                }
+            }
+        }else{
+            for (int i = 0; i < bateau.getTaille(); i++) {
+                if (grille[x][y + i].getEtatCase() != Case.EtatCase.VIDE) {
+                    System.out.println("Emplacement déjà occupé par un autre bateau.");
+                    return false;
+                }
+            }
+        }
+
+        // Vérifier si le bateau peut s'adapter à cet emplacement en fonction de son type
+        switch (bateau.getType()) {
+            case PorteAvions:
+                if (x + 5 > grille.length || y + 5 > grille.length) {
+                    System.out.println("Le porte-avions ne peut pas s'adapter à cet emplacement.");
+                    return false;
+                }
+                break;
+            case Cuirasse:
+                if (x + 4 > grille.length || y + 5 > grille.length) {
+                    System.out.println("Le cuirassé ne peut pas s'adapter à cet emplacement.");
+                    return false;
+                }
+                break;
+            case Destroyer:
+                if (x + 3 > grille.length || y + 5 > grille.length) {
+                    System.out.println("Le destroyer ne peut pas s'adapter à cet emplacement.");
+                    return false;
+                }
+                break;
+            default:
+                System.out.println("Type de bateau non reconnu.");
+                return false;
+        }
+
+        if(orientation.equals("H")){
+            for (int i = 0; i < bateau.getTaille(); i++) {
+                grille[x + i][y].setEtatCase(Case.EtatCase.OCCUPEE);
+            }
+        }else{
+            for (int i = 0; i < bateau.getTaille(); i++) {
+                grille[x][y + i].setEtatCase(Case.EtatCase.OCCUPEE);
+            }
+        }
+
+        return true; // Placement réussi
+    }
+
+    public Case[][] getGrille() {
+        return grille;
+    }
+
+    public void setGrille(Case[][] grille) {
+        this.grille = grille;
+    }
+    
+    
 }
