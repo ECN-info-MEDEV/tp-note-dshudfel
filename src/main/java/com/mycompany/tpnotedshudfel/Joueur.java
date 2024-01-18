@@ -68,7 +68,7 @@ public class Joueur {
     public Joueur(){}
 
     public boolean effectuerTir(Joueur joueur, Point coord){
-        Case caseCible = joueur.getGrille().getCase(coord);
+        Case caseCible = joueur.getGrille().getCases()[coord.getX()][coord.getY()];
         switch (caseCible.getEtatCase()) {
             case OCCUPEE:
                 ArrayList<Bateau> bateaux = joueur.getFlotte().getBateaux();
@@ -77,7 +77,7 @@ public class Joueur {
                         // Vérifier si les coordonnées (x, y) correspondent à la position actuelle du tableau
                         for (int i = 0; i < bateaux.get(a).getTaille(); i++) {
                             if (bateaux.get(a).getCoordonnees().get(i).getX() == coord.getX() && bateaux.get(a).getCoordonnees().get(i).getY() == coord.getY()) {
-                                caseCible.setEtatCase(Case.EtatCase.COULEE);
+                                caseCible.setEtatCase(Case.EtatCase.TOUCHEE);
                                 bateaux.get(a).recevoirTir(coord);
                                 return true; // Les coordonnées existent dans le tablea
                             }
@@ -122,6 +122,38 @@ public class Joueur {
         // Fermer le scanner après utilisation
         scanner.close();
     }
+    
+    public void afficherJeu(Joueur joueur) {
+    System.out.println("Grille du joueur " + joueur.getNom() + ":");
+    System.out.println();
+
+    Grille grille = joueur.getGrille();
+
+    for (int i = 0; i < grille.getTaille(); i++) {
+        for (int j = 0; j < grille.getTaille(); j++) {
+            Case.EtatCase etatCase = grille.getCase(i, j).getEtatCase();
+
+            switch (etatCase) {
+                case VIDE:
+                    System.out.print("~ "); // Eau non touchée
+                    break;
+                case OCCUPEE:
+                    System.out.print("O "); // Partie du bateau non touchée
+                    break;
+                case TOUCHEE:
+                    System.out.print("X "); // Partie du bateau touchée
+                    break;
+                case COULEE:
+                    System.out.print("C "); // Bateau coulé
+                    break;
+            }
+        }
+            System.out.println();
+        }
+
+        System.out.println();
+    }
+
 
     public boolean recevoirTir(Point coord) {
         // Logique pour mettre à jour l'état du joueur en fonction du tir reçu
@@ -131,4 +163,5 @@ public class Joueur {
     public boolean verifierFlotteCoulee() {
         return true;
     }
+    
 }

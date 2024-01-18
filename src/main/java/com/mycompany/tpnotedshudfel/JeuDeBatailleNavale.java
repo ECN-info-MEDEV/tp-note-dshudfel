@@ -40,7 +40,31 @@ public class JeuDeBatailleNavale {
     }
 
     public void commencerTour() {
-        // Logique pour commencer un nouveau tour de jeu
+        // Afficher l'état actuel du jeu (grilles, bateaux coulés, etc.)
+        afficherEtatJeu();
+
+        // Demander au joueur actuel de tirer
+        Joueur joueurActuel = joueurs.get(tour % 2);
+        Point coordTir = demanderCoordonneesTir(joueurActuel);
+
+        // Effectuer le tir
+        boolean bateauTouche = effectuerTir(joueurActuel, coordTir);
+
+        // Mettre à jour l'état du joueur en fonction du tir
+        joueurActuel.recevoirTir(coordTir);
+
+        // Vérifier si un bateau a été touché
+        if (bateauTouche) {
+            System.out.println("Un bateau a été touché !");
+        } else {
+            System.out.println("Aucun bateau touché.");
+        }
+
+        // Vérifier si la partie est terminée
+        finPartie = verifierFinPartie();
+
+        // Passer au tour suivant
+        tour++;
     }
 
     public boolean effectuerTir(Joueur joueur, Point coord) {

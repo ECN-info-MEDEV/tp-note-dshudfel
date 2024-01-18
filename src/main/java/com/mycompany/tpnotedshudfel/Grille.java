@@ -27,8 +27,8 @@ public class Grille {
     }
 
     // Méthode pour obtenir une case spécifique dans la grille
-    public Case getCase(int taille) {
-        return grille[taille][taille];
+    public Case getCase(int pos) {
+        return grille[pos][pos];
     }
 
     // Méthode pour définir la taille de la grille (grille carrée)
@@ -140,7 +140,7 @@ public class Grille {
         return true; // Placement réussi
     }
 
-    public Case[][] getGrille() {
+    public Case[][] getCases() {
         return grille;
     }
 

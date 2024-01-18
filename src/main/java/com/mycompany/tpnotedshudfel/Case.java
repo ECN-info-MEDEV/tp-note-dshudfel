@@ -13,6 +13,7 @@ public class Case {
     enum EtatCase {
         VIDE,
         OCCUPEE,
+        TOUCHEE,
         COULEE
     }
 
