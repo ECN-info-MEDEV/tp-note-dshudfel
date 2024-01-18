@@ -26,9 +26,10 @@ public class Bateau {
     private TypeBateau type;
     private ArrayList<Point> coordonnees;
     private Etat etat;
+    private int taille;
 
     // Constructeur
-    public Bateau(TypeBateau type, ArrayList<Point> coordonnees, Etat etat) {
+    public Bateau(TypeBateau type, ArrayList<Point> coordonnees, Etat etat, int taille) {
         this.type = type;
         this.coordonnees = coordonnees;
         this.etat = etat;
@@ -58,4 +59,14 @@ public class Bateau {
         etat = Etat.TOUCHE;
         
     }
+
+    public int getTaille() {
+        return taille;
+    }
+
+    public void setTaille(int taille) {
+        this.taille = taille;
+    }
+     
+     
 }
