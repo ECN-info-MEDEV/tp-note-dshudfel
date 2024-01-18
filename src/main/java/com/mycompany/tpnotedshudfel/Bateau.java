@@ -32,6 +32,7 @@ public class Bateau {
         this.type = type;
         this.coordonnees = coordonnees;
         this.etat = etat;
+        this.taille = taille;
     }
 
     // Méthode pour obtenir le type du bateau

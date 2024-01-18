@@ -105,7 +105,7 @@ public class Joueur {
         flotte.ajout(destroyer);
 
         this.setFlotte(flotte);
-        for (Bateau bateau : flotte.getBateaux()) {
+        for (Bateau bateau : this.flotte.getBateaux()) {
             boolean placementReussi = false;
 
             // Tentatives de placement jusqu'à réussite
@@ -119,14 +119,14 @@ public class Joueur {
                 
                 System.out.println("Entrez l'orientation H/V : ");
                 
-                String orientation = scanner.nextLine();
+                String orientation = scanner.next();
 
                 // Créer un Point avec les coordonnées saisies
                 Point coord = new Point(x, y);
 
                 // Tenter de placer le bateau à ces coordonnées
-                placementReussi = grille.placerBateau(bateau, coord, orientation);
-
+                placementReussi = this.grille.placerBateau(bateau, coord, orientation);
+                System.out.println("hola"+this.grille.getGrille()[0][0].getEtatCase());
                 if (!placementReussi) {
                     System.out.println("Placement invalide. Réessayez.");
                 }
@@ -150,9 +150,9 @@ public class Joueur {
         System.out.println();
 
 
-        for (int i = 0; i < grille.getTaille(); i++) {
+        for (int i = 0; i < this.grille.getTaille(); i++) {
             for (int j = 0; j < grille.getTaille(); j++) {
-                Case.EtatCase etatCase = grille.getCase(i, j).getEtatCase();
+                Case.EtatCase etatCase = this.grille.getCase(i, j).getEtatCase();
 
                 switch (etatCase) {
                     case VIDE:

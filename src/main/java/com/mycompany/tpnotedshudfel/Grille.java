@@ -87,6 +87,7 @@ public class Grille {
             System.out.println("Coordonnées de placement invalides.");
             return false;
         }
+        
            
         if(orientation.equals("H")){
             // Vérifier si les emplacements sont déjà occupés par d'autres bateaux
@@ -131,12 +132,13 @@ public class Grille {
         }
 
         if(orientation.equals("H")){
+            System.out.println(bateau.getTaille());
             for (int i = 0; i < bateau.getTaille(); i++) {
-                grille[x + i][y].setEtatCase(Case.EtatCase.OCCUPEE);
+                this.grille[x][y + i].setEtatCase(Case.EtatCase.OCCUPEE);
             }
         }else{
             for (int i = 0; i < bateau.getTaille(); i++) {
-                grille[x][y + i].setEtatCase(Case.EtatCase.OCCUPEE);
+                this.grille[x + i][y].setEtatCase(Case.EtatCase.OCCUPEE);
             }
         }
 
