@@ -10,10 +10,13 @@ package com.mycompany.tpnotedshudfel;
  */
 public class Grille {
     private Case[][] grille;
+    private int taille;
+    
 
     // Constructeur
     public Grille(int taille) {
         this.grille = new Case[taille][taille];
+        this.taille = taille;
         initialiserGrille();
     }
 
@@ -146,6 +149,14 @@ public class Grille {
 
     public void setGrille(Case[][] grille) {
         this.grille = grille;
+    }
+
+    public Case[][] getGrille() {
+        return grille;
+    }
+
+    public int getTaille() {
+        return taille;
     }
     
     

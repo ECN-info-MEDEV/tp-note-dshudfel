@@ -129,7 +129,7 @@ public class Joueur {
 
     Grille grille = joueur.getGrille();
 
-    for (int i = 0; i < grille.getTaille(); i++) {
+    for (int i = 0; i < grille; i++) {
         for (int j = 0; j < grille.getTaille(); j++) {
             Case.EtatCase etatCase = grille.getCase(i, j).getEtatCase();
 
