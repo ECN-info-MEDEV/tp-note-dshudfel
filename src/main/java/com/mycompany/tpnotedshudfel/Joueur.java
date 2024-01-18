@@ -64,7 +64,24 @@ public class Joueur {
 
     public boolean effectuerTir(Joueur joueur, Point coord){
         Case caseCible = joueur.getGrille().getCase(coord);
-
+        switch (caseCible.getEtatCase()) {
+            case OCCUPEE:
+                Flotte bateaux = joueur.getFlotte().getFlotte();
+                // Parcourir toutes les bateaux
+                for (int a = 0; i < bateaux.length; i++) {
+                        // Vérifier si les coordonnées (x, y) correspondent à la position actuelle du tableau
+                        for (int i = 0; i < bateaux[a].getCoordonnees().length; i++) {
+                            if (bateaux[a].getCoordonnees().[i].getX == coord.getX && bateaux[a].getCoordonnees().[i].getY == coord.getY) {
+                                caseCible.setEtatCase(Case.EtatCase.COULEE);
+                                joueur.recevoirTir(coord);
+                                return true; // Les coordonnées existent dans le tablea
+                            }
+                        }     
+                }
+                case COULEE:
+                    System.out.println("Vous avez déjà tiré ici.");
+                default: return false; // Tir déjà effectué sur cette case
+        }
         return false; // Par défaut, considérons que le tir a manqué
     }
     
