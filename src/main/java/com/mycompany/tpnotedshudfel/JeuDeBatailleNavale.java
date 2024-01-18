@@ -22,7 +22,21 @@ public class JeuDeBatailleNavale {
     }
 
     public void initialiserPartie() {
-        // Logique pour initialiser la partie avec les joueurs et le plateau
+        // Créer deux joueurs avec des grilles de jeu
+        Joueur joueur1 = new Joueur("Joueur 1", new Flotte(), false);
+        Joueur joueur2 = new Joueur("Joueur 2", new Flotte(), false);
+
+        // Définir la taille des grilles
+        joueur1.setTailleGrille(10);
+        joueur2.setTailleGrille(10);
+
+        // Ajouter les joueurs à la liste
+        joueurs.add(joueur1);
+        joueurs.add(joueur2);
+
+        // Placer les bateaux sur les grilles des joueurs
+        joueur1.placerBateaux();
+        joueur2.placerBateaux();
     }
 
     public void commencerTour() {

@@ -38,7 +38,7 @@ public class Flotte {
         return true; // Tous les bateaux sont en bon état.
     }
 
-    public ArrayList<Bateau> getFlotte() {
+    public ArrayList<Bateau> getBateaux() {
         return flotte;
     }
 

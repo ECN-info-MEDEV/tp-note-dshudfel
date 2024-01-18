@@ -4,6 +4,7 @@
  */
 package com.mycompany.tpnotedshudfel;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,10 @@ public class Joueur {
     private Grille grille;
 
     public Joueur(String nom, Flotte flotte, boolean etat, Grille grille) {
+        this(nom, flotte, etat);
+    }
+
+    public Joueur(String nom, Flotte flotte, boolean etat) {
         this.nom = nom;
         this.flotte = new Flotte();
         this.etat = etat;
@@ -66,14 +71,14 @@ public class Joueur {
         Case caseCible = joueur.getGrille().getCase(coord);
         switch (caseCible.getEtatCase()) {
             case OCCUPEE:
-                Flotte bateaux = joueur.getFlotte().getFlotte();
+                ArrayList<Bateau> bateaux = joueur.getFlotte().getBateaux();
                 // Parcourir toutes les bateaux
-                for (int a = 0; i < bateaux.length; i++) {
+                for (int a = 0; a < bateaux.size(); a++) {
                         // Vérifier si les coordonnées (x, y) correspondent à la position actuelle du tableau
-                        for (int i = 0; i < bateaux[a].getCoordonnees().length; i++) {
-                            if (bateaux[a].getCoordonnees().[i].getX == coord.getX && bateaux[a].getCoordonnees().[i].getY == coord.getY) {
+                        for (int i = 0; i < bateaux.get(a).getTaille(); i++) {
+                            if (bateaux.get(a).getCoordonnees().get(i).getX() == coord.getX() && bateaux.get(a).getCoordonnees().get(i).getY() == coord.getY()) {
                                 caseCible.setEtatCase(Case.EtatCase.COULEE);
-                                joueur.recevoirTir(coord);
+                                bateaux.get(a).recevoirTir(coord);
                                 return true; // Les coordonnées existent dans le tablea
                             }
                         }     
@@ -87,7 +92,7 @@ public class Joueur {
     public void placerBateaux() {
         Scanner scanner = new Scanner(System.in);
 
-        for (Bateau bateau : flotte.getFlotte()) {
+        for (Bateau bateau : flotte.getBateaux()) {
             boolean placementReussi = false;
 
             // Tentatives de placement jusqu'à réussite
