@@ -87,11 +87,6 @@ public class Joueur {
         // Logique pour permettre au joueur de placer ses bateaux sur le plateau
     }
 
-    public boolean recevoirTir(Point coord) {
-        // Logique pour mettre à jour l'état du joueur en fonction du tir reçu
-        return false;
-    }
-
     public boolean verifierFlotteCoulee() {
         return flotte.verifierFlotteCoulee();
     }
