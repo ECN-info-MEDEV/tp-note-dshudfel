@@ -19,7 +19,7 @@ enum Etat {
     COULE
 }
 /**
- *
+ * Classe pour la création des bateaux
  * @author Diego Felipe Lopez
  */
 public class Bateau {
@@ -27,7 +27,13 @@ public class Bateau {
     private ArrayList<Point> coordonnees;
     private Etat etat;
     private int taille;
-
+/**
+ * Constructeur d'un bateau 
+ * @param type Choisir un des types existants des bateaux d'une liste
+ * @param coordonnees le Arraylist des points qui constitut le bateaus
+ * @param etat
+ * @param taille 
+ */
     // Constructeur
     public Bateau(TypeBateau type, ArrayList<Point> coordonnees, Etat etat, int taille) {
         this.type = type;
