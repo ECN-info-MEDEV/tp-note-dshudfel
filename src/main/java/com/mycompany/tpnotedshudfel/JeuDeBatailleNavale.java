@@ -36,6 +36,8 @@ public class JeuDeBatailleNavale {
         // Ajouter les joueurs à la liste
         joueurs.add(joueur1);
         joueurs.add(joueur2);
+        
+        
 
         // Placer les bateaux sur les grilles des joueurs
         joueur1.placerBateaux();

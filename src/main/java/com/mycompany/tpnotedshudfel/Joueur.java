@@ -93,7 +93,18 @@ public class Joueur {
     
     public void placerBateaux() {
         Scanner scanner = new Scanner(System.in);
+        Bateau porteAvions = new Bateau(TypeBateau.PorteAvions, new ArrayList<>(), Etat.DETENT, 5);
+        flotte.ajout(porteAvions);
 
+        // Ajout d'un Cuirassé (Taille 4x1)
+        Bateau cuirasse = new Bateau(TypeBateau.Cuirasse, new ArrayList<>(), Etat.DETENT, 4);
+        flotte.ajout(cuirasse);
+
+        // Ajout d'un Destroyer (Taille 3x1)
+        Bateau destroyer = new Bateau(TypeBateau.Destroyer, new ArrayList<>(), Etat.DETENT, 3);
+        flotte.ajout(destroyer);
+
+        this.setFlotte(flotte);
         for (Bateau bateau : flotte.getBateaux()) {
             boolean placementReussi = false;
 
@@ -108,7 +119,7 @@ public class Joueur {
                 
                 System.out.println("Entrez l'orientation H/V : ");
                 
-                String orientation = scanner.next();
+                String orientation = scanner.nextLine();
 
                 // Créer un Point avec les coordonnées saisies
                 Point coord = new Point(x, y);
@@ -122,7 +133,6 @@ public class Joueur {
             }
         }
         afficherJeu();
-        // Fermer le scanner après utilisation
         scanner.close();
     }
 
