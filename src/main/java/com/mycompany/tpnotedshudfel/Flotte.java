@@ -37,4 +37,13 @@ public class Flotte {
 
         return true; // Tous les bateaux sont en bon état.
     }
+
+    public ArrayList<Bateau> getFlotte() {
+        return flotte;
+    }
+
+    public void setFlotte(ArrayList<Bateau> flotte) {
+        this.flotte = flotte;
+    }
+    
 }

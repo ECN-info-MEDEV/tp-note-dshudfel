@@ -4,6 +4,8 @@
  */
 package com.mycompany.tpnotedshudfel;
 
+import java.util.Scanner;
+
 /**
  *
  * @author hudsonteixeira
@@ -20,7 +22,6 @@ public class Joueur {
         this.nom = nom;
         this.flotte = new Flotte();
         this.etat = etat;
-        this.grille = new Grille();
     }
 
     public String getNom() {
@@ -62,14 +63,43 @@ public class Joueur {
     public Joueur(){}
 
     public boolean effectuerTir(Joueur joueur, Point coord){
-            Case caseCible = joueur.getGrille().getCase(coord);
+        Case caseCible = joueur.getGrille().getCase(coord);
 
-        
         return false; // Par défaut, considérons que le tir a manqué
     }
     
     public void placerBateaux() {
-        // Logique pour permettre au joueur de placer ses bateaux sur le plateau
+        Scanner scanner = new Scanner(System.in);
+
+        for (Bateau bateau : flotte.getFlotte()) {
+            boolean placementReussi = false;
+
+            // Tentatives de placement jusqu'à réussite
+            while (!placementReussi) {
+                System.out.println("Placement du bateau " + bateau.getType() + "\nEntrez les coordonnées (x y) : ");
+
+                // Lire les coordonnées de l'utilisateur
+                int x = scanner.nextInt();
+                int y = scanner.nextInt();
+                
+                System.out.println("Entrez l'orientation H/V : ");
+                
+                String orientation = scanner.next();
+
+                // Créer un Point avec les coordonnées saisies
+                Point coord = new Point(x, y);
+
+                // Tenter de placer le bateau à ces coordonnées
+                placementReussi = grille.placerBateau(bateau, coord, orientation);
+
+                if (!placementReussi) {
+                    System.out.println("Placement invalide. Réessayez.");
+                }
+            }
+        }
+
+        // Fermer le scanner après utilisation
+        scanner.close();
     }
 
     public boolean recevoirTir(Point coord) {
@@ -78,6 +108,6 @@ public class Joueur {
     }
 
     public boolean verifierFlotteCoulee() {
-        return flotte.verifierFlotteCoulee();
+        return true;
     }
 }
