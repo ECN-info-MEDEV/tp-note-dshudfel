@@ -81,7 +81,6 @@ public class Joueur {
                     System.out.println("Vous avez déjà tiré ici.");
                 default: return false; // Tir déjà effectué sur cette case
         }
-        return false; // Par défaut, considérons que le tir a manqué
     }
     
     public void placerBateaux() {
