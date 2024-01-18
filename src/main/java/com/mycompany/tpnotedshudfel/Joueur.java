@@ -4,6 +4,10 @@
  */
 package com.mycompany.tpnotedshudfel;
 
+import static com.mycompany.tpnotedshudfel.Case.EtatCase.COULEE;
+import static com.mycompany.tpnotedshudfel.Case.EtatCase.OCCUPEE;
+import static com.mycompany.tpnotedshudfel.Case.EtatCase.TOUCHEE;
+import static com.mycompany.tpnotedshudfel.Case.EtatCase.VIDE;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,14 +23,12 @@ public class Joueur {
     private boolean etat;
     private Grille grille;
 
-    public Joueur(String nom, Flotte flotte, boolean etat, Grille grille) {
-        this(nom, flotte, etat);
-    }
 
-    public Joueur(String nom, Flotte flotte, boolean etat) {
+    public Joueur(String nom, Flotte flotte, boolean etat, int taille) {
         this.nom = nom;
         this.flotte = new Flotte();
         this.etat = etat;
+        this.grille = new Grille(taille);
     }
 
     public String getNom() {
@@ -97,6 +99,7 @@ public class Joueur {
 
             // Tentatives de placement jusqu'à réussite
             while (!placementReussi) {
+                afficherJeu();
                 System.out.println("Placement du bateau " + bateau.getType() + "\nEntrez les coordonnées (x y) : ");
 
                 // Lire les coordonnées de l'utilisateur
@@ -118,42 +121,10 @@ public class Joueur {
                 }
             }
         }
-
+        afficherJeu();
         // Fermer le scanner après utilisation
         scanner.close();
     }
-    
-    public void afficherJeu(Joueur joueur) {
-    System.out.println("Grille du joueur " + joueur.getNom() + ":");
-    System.out.println();
-
-    Grille grille = joueur.getGrille();
-
-    for (int i = 0; i < grille.getTaille(); i++) {
-        for (int j = 0; j < grille.getTaille(); j++) {
-            Case.EtatCase etatCase = grille.getCase(i, j).getEtatCase();
-
-            switch (etatCase) {
-                case VIDE:
-                    System.out.print("~ "); // Eau non touchée
-                    break;
-                case OCCUPEE:
-                    System.out.print("O "); // Partie du bateau non touchée
-                    break;
-                case TOUCHEE:
-                    System.out.print("X "); // Partie du bateau touchée
-                    break;
-                case COULEE:
-                    System.out.print("C "); // Bateau coulé
-                    break;
-            }
-        }
-            System.out.println();
-        }
-
-        System.out.println();
-    }
-
 
     public boolean recevoirTir(Point coord) {
         // Logique pour mettre à jour l'état du joueur en fonction du tir reçu
@@ -162,6 +133,36 @@ public class Joueur {
 
     public boolean verifierFlotteCoulee() {
         return true;
+    }
+    
+    public void afficherJeu() {
+        System.out.println("Grille du joueur " + this.nom + ":");
+        System.out.println();
+
+
+        for (int i = 0; i < grille.getTaille(); i++) {
+            for (int j = 0; j < grille.getTaille(); j++) {
+                Case.EtatCase etatCase = grille.getCase(i, j).getEtatCase();
+
+                switch (etatCase) {
+                    case VIDE:
+                        System.out.print("~ "); // Eau non touchée
+                        break;
+                    case OCCUPEE:
+                        System.out.print("O "); // Partie du bateau non touchée
+                        break;
+                    case TOUCHEE:
+                        System.out.print("X "); // Partie du bateau touchée
+                        break;
+                    case COULEE:
+                        System.out.print("C "); // Bateau coulé
+                        break;
+                }
+            }
+                System.out.println();
+            }
+
+            System.out.println();
     }
     
 }

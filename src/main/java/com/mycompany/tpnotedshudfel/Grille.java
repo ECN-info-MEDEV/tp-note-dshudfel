@@ -70,7 +70,7 @@ public class Grille {
             caseVisee.setEtatCase(Case.EtatCase.COULEE);
             return true; // Bateau touché
         } else {
-            caseVisee.setEtatCase(Case.EtatCase.COULEE);
+            caseVisee.setEtatCase(Case.EtatCase.TOUCHEE);
             return false; // Tir dans l'eau
         }
     }

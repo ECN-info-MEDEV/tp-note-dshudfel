@@ -4,7 +4,6 @@
  */
 package com.mycompany.tpnotedshudfel;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

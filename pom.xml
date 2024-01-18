@@ -37,7 +37,7 @@
                 </descriptorRefs>
                 <archive>
                     <manifest>
-                      <mainClass>com.mycompany.tpnotedshudfel.Tpnotedshudfel</mainClass>
+                      <mainClass>com.mycompany.tpnotedshudfel.Main</mainClass>
                     </manifest>
                 </archive>
             </configuration>
@@ -59,6 +59,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
-        <exec.mainClass>com.mycompany.tpnotedshudfel.Tpnotedshudfel</exec.mainClass>
+        <exec.mainClass>com.mycompany.tpnotedshudfel.Main</exec.mainClass>
     </properties>
 </project>
