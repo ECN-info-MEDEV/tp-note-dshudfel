@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
 package com.mycompany.tpnotedshudfel;
-
-import java.awt.Point;
 import java.util.ArrayList;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
